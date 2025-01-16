@@ -398,10 +398,14 @@ PrefabInstance:
       addedObject: {fileID: 1101415885}
     - targetCorrespondingSourceObject: {fileID: 1000010585300684, guid: 23d25b2e2d4364dd4b92c52ef40cd36e, type: 3}
       insertIndex: 3
+<<<<<<< HEAD
       addedObject: {fileID: 1635560650}
     - targetCorrespondingSourceObject: {fileID: 1000013750720512, guid: 23d25b2e2d4364dd4b92c52ef40cd36e, type: 3}
       insertIndex: 3
       addedObject: {fileID: 921678131}
+=======
+      addedObject: {fileID: 1852345638}
+>>>>>>> 7f80119c8e23396f808b8e3d461b7b94e4e47f03
   m_SourcePrefab: {fileID: 100100000, guid: 23d25b2e2d4364dd4b92c52ef40cd36e, type: 3}
 --- !u!1 &1101415879 stripped
 GameObject:
@@ -687,6 +691,43 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_RespectSceneVisibilityWhenBakingGI: 0
+<<<<<<< HEAD
+=======
+--- !u!1 &1852345633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010585300684, guid: 23d25b2e2d4364dd4b92c52ef40cd36e, type: 3}
+  m_PrefabInstance: {fileID: 1063491186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1852345638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852345633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404095eb73a7d044d9b7936125079eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1919382302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010943916374, guid: 23d25b2e2d4364dd4b92c52ef40cd36e, type: 3}
+  m_PrefabInstance: {fileID: 1063491186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1919382307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919382302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cc78e3f48fb7740bd644ef8f9f376d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 7f80119c8e23396f808b8e3d461b7b94e4e47f03
 --- !u!1001 &2271036429879105427
 PrefabInstance:
   m_ObjectHideFlags: 0
