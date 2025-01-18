@@ -2,62 +2,67 @@ using UnityEngine;
 
 public class BedsideDrawerController : MonoBehaviour
 {
-    public float moveDistance = 0.5f; // Default to positive
+    public float moveDistance = 0.5f;
     public float moveSpeed = 2.0f;
+    public Camera playerCamera;
+    public KeyCode toggleKey = KeyCode.P; // Key to trigger the drawer
 
     private System.Collections.Generic.Dictionary<Transform, DrawerState> drawerStates = new System.Collections.Generic.Dictionary<Transform, DrawerState>();
 
     void Update()
     {
+        // Listen for the keyboard key press
+        if (Input.GetKeyDown(toggleKey))
+        {
+            TryToggleDrawer();
+        }
+
+        // Listen for mouse click
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            TryToggleDrawer();
+        }
+    }
 
-            if (Physics.Raycast(ray, out hit, 5.05f))
+    private void TryToggleDrawer()
+    {
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 5.05f))
+        {
+            Transform hitTransform = hit.collider.transform;
+            if (hitTransform.CompareTag("draw"))
             {
-                Debug.Log("Hit object: " + hit.collider.name);
-
-                Transform hitTransform = hit.collider.transform;
-                if (hitTransform.CompareTag("draw"))
-                {
-                    HandleDrawer(hitTransform);
-                }
-                else if (hitTransform.parent != null && hitTransform.parent.CompareTag("draw"))
-                {
-                    HandleDrawer(hitTransform.parent);
-                }
-                else
-                {
-                    Debug.Log("Hit object is not a drawer.");
-                }
+                HandleDrawer(hitTransform);
+            }
+            else if (hitTransform.parent != null && hitTransform.parent.CompareTag("draw"))
+            {
+                HandleDrawer(hitTransform.parent);
+            }
+            else
+            {
+                Debug.Log("Hit object is not a drawer.");
             }
         }
     }
 
     private void HandleDrawer(Transform drawerTransform)
+    {
+        if (!drawerStates.ContainsKey(drawerTransform))
         {
-            if (!drawerStates.ContainsKey(drawerTransform))
-            {
-                drawerStates[drawerTransform] = new DrawerState(drawerTransform.localPosition, false);
-            }
-
-            DrawerState drawerState = drawerStates[drawerTransform];
-
-            // Determine the correct target position based on current state
-            Vector3 targetPosition = drawerState.IsOpen
-                ? drawerState.InitialPosition // Move back to initial position when closing
-                : drawerState.InitialPosition + new Vector3(0, 0, moveDistance); // Move forward when opening
-
-            Debug.Log("Initial Position: " + drawerState.InitialPosition);
-            Debug.Log("Target Position: " + targetPosition);
-
-            StopAllCoroutines(); // Stop any ongoing movement
-            StartCoroutine(MoveDrawer(drawerTransform, targetPosition));
-
-            drawerState.IsOpen = !drawerState.IsOpen; // Toggle the state
+            drawerStates[drawerTransform] = new DrawerState(drawerTransform.localPosition, false);
         }
 
+        DrawerState drawerState = drawerStates[drawerTransform];
+        Vector3 targetPosition = drawerState.IsOpen
+            ? drawerState.InitialPosition
+            : drawerState.InitialPosition + new Vector3(0, 0, moveDistance);
+
+        StopAllCoroutines();
+        StartCoroutine(MoveDrawer(drawerTransform, targetPosition));
+        drawerState.IsOpen = !drawerState.IsOpen;
+    }
 
     private System.Collections.IEnumerator MoveDrawer(Transform drawerTransform, Vector3 targetLocalPosition)
     {
@@ -83,11 +88,6 @@ public class BedsideDrawerController : MonoBehaviour
         {
             InitialPosition = initialPosition;
             IsOpen = isOpen;
-        }
-
-        public Vector3 OpenPosition(float moveDistance)
-        {
-            return InitialPosition + new Vector3(0, 0, moveDistance);
         }
     }
 }
