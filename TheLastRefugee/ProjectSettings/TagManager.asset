@@ -4,13 +4,14 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Ground
   - draw01
   - draw
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - whatIsGround
   - Water
   - UI
   - 
