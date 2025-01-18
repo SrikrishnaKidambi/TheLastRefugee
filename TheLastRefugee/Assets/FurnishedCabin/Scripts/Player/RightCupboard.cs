@@ -4,6 +4,23 @@ public class RightCupboardController : MonoBehaviour
 {
     private bool isOpen = false; // Tracks the door's state (open/closed)
 
+    private bool canOpen = false;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Entered the collider");
+            canOpen = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canOpen = false;
+        }
+    }
+
     void OnMouseDown()
     {
         ToggleDoor(); // Trigger when the object is clicked
@@ -24,6 +41,14 @@ public class RightCupboardController : MonoBehaviour
 
         isOpen = !isOpen; // Toggle the state
         Debug.Log("Door toggled. isOpen = " + isOpen);
+    }
+
+    void Update()
+    {
+        if (canOpen && Input.GetKeyDown(KeyCode.O)) // Trigger when E key is pressed
+        {
+            ToggleDoor();
+        }
     }
 }
 
