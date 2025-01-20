@@ -838,7 +838,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 801894004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1130154655}
+        m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: City
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &801894004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,6 +1025,7 @@ GameObject:
   - component: {fileID: 1130154654}
   - component: {fileID: 1130154653}
   - component: {fileID: 1130154652}
+  - component: {fileID: 1130154655}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1105,6 +1118,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1130154655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130154650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d2a2f729b0f1e41a16e3ddf7010d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260393761
 GameObject:
   m_ObjectHideFlags: 0
