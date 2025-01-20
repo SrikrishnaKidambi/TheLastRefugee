@@ -3,9 +3,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    public float walkSpeed = 5f; // Default walking speed
+    public float runSpeed = 10f; // Speed when running
     public float groundDrag;
-
     public float airMultiplier;
 
     [Header("Jump Settings")]
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode runKey = KeyCode.RightShift; // Key to trigger running
 
     [Header("Animator")]
     [SerializeField] private Animator playerAnimator;
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     private Rigidbody rb;
+
+    private bool isRunning = false;
 
     private void Start()
     {
@@ -53,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearDamping = 0f;
         }
 
-        HandleAnimations();  // Call function to handle animation logic
+        HandleAnimations(); // Call function to handle animation logic
     }
 
     private void FixedUpdate()
@@ -65,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        // Check if the run key is being held
+        isRunning = Input.GetKey(runKey);
+
         if (Input.GetKeyDown(jumpKey) && grounded && !isJumping)
         {
             Jump();
@@ -77,21 +84,18 @@ public class PlayerMovement : MonoBehaviour
         // Calculate the movement direction based on player orientation and input
         moveDirection = oreintation.forward * verticalInput + oreintation.right * horizontalInput;
 
-        // Debugging: Check the input and direction vectors
-        Debug.Log($"Horizontal Input: {horizontalInput}, Vertical Input: {verticalInput}");
-        Debug.Log($"Move Direction: {moveDirection}");
-
         // Apply force for movement
+        float currentSpeed = isRunning && grounded ? runSpeed : walkSpeed;
+
         if (grounded && !isJumping)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
         }
         else if (!grounded && !isJumping)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * currentSpeed * 10f * airMultiplier, ForceMode.Force);
         }
     }
-
 
     private void Jump()
     {
@@ -115,9 +119,9 @@ public class PlayerMovement : MonoBehaviour
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        if (flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > (isRunning ? runSpeed : walkSpeed))
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * (isRunning ? runSpeed : walkSpeed);
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
     }
@@ -150,29 +154,41 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
     private void HandleAnimations()
     {
         playerAnimator.SetBool("IsWalkingForward", false);
         playerAnimator.SetBool("IsWalkingBackward", false);
         playerAnimator.SetBool("IsWalkingLeft", false);
         playerAnimator.SetBool("IsWalkingRight", false);
+        playerAnimator.SetBool("IsRunning", false);
+
         if (isJumping)
         {
             return;
         }
+
         if (grounded)
         {
             if (verticalInput > 0)
             {
-                playerAnimator.SetBool("IsWalkingForward", true);
-            }else if(verticalInput < 0)
+                if (isRunning)
+                {
+                    playerAnimator.SetBool("IsRunning", true);
+                }
+                else
+                {
+                    playerAnimator.SetBool("IsWalkingForward", true);
+                }
+            }
+            else if (verticalInput < 0)
             {
                 playerAnimator.SetBool("IsWalkingBackward", true);
-            }else if(horizontalInput > 0)
+            }
+            else if (horizontalInput > 0)
             {
                 playerAnimator.SetBool("IsWalkingRight", true);
-            }else if(horizontalInput < 0)
+            }
+            else if (horizontalInput < 0)
             {
                 playerAnimator.SetBool("IsWalkingLeft", true);
             }
