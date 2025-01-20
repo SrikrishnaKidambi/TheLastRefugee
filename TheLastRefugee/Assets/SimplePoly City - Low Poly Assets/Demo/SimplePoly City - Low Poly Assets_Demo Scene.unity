@@ -7330,9 +7330,9 @@ GameObject:
   - component: {fileID: 353797164}
   - component: {fileID: 353797163}
   - component: {fileID: 353797162}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -35746,13 +35746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6a6df342b52d24092cf6bbb590c535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveHeight: 0.5
-  waveFrequency: 0.5
-  waveLength: 0.75
-  waveOriginPosition: {x: 0, y: 0, z: 0}
-  meshFilter: {fileID: 0}
-  mesh: {fileID: 0}
-  vertices: []
 --- !u!23 &1629013846
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48782,3 +48775,5 @@ SceneRoots:
   - {fileID: 353797164}
   - {fileID: 380113578}
   - {fileID: 1704015174}
+  - {fileID: 1629013848}
+  - {fileID: 1996459753}
