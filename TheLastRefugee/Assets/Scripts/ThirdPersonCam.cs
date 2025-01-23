@@ -11,8 +11,8 @@ public class ThirdPersonCam : MonoBehaviour
     public Rigidbody rb;
 
     [Header("Camera Settings")]
-    public float rotationSpeed=5f;
-    public Vector3 cameraOffset=new Vector3(0f,2f,100f);
+    public float rotationSpeed = 5f;
+    public Vector3 cameraOffset = new Vector3(0f, 2f, 100f);
 
     private void Start()
     {
