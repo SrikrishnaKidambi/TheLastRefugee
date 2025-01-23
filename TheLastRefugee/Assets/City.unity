@@ -10089,6 +10089,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 1d81ce67358564e43ba98d7f2da8d444, type: 3}
+    - target: {fileID: 5112252551693724671, guid: a8f88bc3f0ee14847aff9af4341e8c00, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27413,6 +27417,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: c710f8f110be9fb42b87232b38d9edbc, type: 3}
     - target: {fileID: 8792494139078419043, guid: 9e44066f1a3229349b002678d0268e65, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792494139078419043, guid: 9e44066f1a3229349b002678d0268e65, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
@@ -39435,7 +39443,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704015169}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!124 &1704015171
 Behaviour:
   m_ObjectHideFlags: 0
@@ -39504,7 +39512,7 @@ Transform:
   m_GameObject: {fileID: 1704015169}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534014, y: 0.00000015703152, z: -0.000000041134594, w: 0.9673612}
-  m_LocalPosition: {x: 7.258, y: 3.0609999, z: 43.4}
+  m_LocalPosition: {x: 6.9, y: 3.35, z: 43.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
