@@ -9730,7 +9730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b734bb9250e3aa4dba479656e41978b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraShake: {fileID: 0}
 --- !u!4 &312762824
 Transform:
   m_ObjectHideFlags: 0
@@ -17955,9 +17954,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: cbc86bb57f673ba45a8426789eb0fac0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2081660049}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: cbc86bb57f673ba45a8426789eb0fac0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2081660050}
   m_SourcePrefab: {fileID: 100100000, guid: cbc86bb57f673ba45a8426789eb0fac0, type: 3}
 --- !u!1001 &565034979
 PrefabInstance:
@@ -22072,21 +22068,6 @@ MonoBehaviour:
   shakeDuration: 120
   shakeMagnitude: 0.2
   delayBeforeShake: 35
---- !u!114 &694057650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694057645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cd12a0509f7e3479c3dd2a5c5bb60b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeDuration: 30
-  shakeMagnitude: 0.2
-  delayBeforeShake: 5
 --- !u!1001 &696401427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22146,9 +22127,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
       insertIndex: -1
       addedObject: {fileID: 694057649}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 694057650}
   m_SourcePrefab: {fileID: 100100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
 --- !u!1001 &696678803
 PrefabInstance:
@@ -66680,21 +66658,6 @@ MonoBehaviour:
   shakeDuration: 120
   shakeMagnitude: 0.2
   delayBeforeShake: 35
---- !u!114 &2081660050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081660045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cd12a0509f7e3479c3dd2a5c5bb60b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeDuration: 30
-  shakeMagnitude: 0.2
-  delayBeforeShake: 5
 --- !u!1001 &2081857782
 PrefabInstance:
   m_ObjectHideFlags: 0
