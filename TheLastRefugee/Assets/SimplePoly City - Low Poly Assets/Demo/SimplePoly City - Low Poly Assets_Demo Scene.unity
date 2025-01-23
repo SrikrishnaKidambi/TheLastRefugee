@@ -18088,10 +18088,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2725530210760810273, guid: bff89051ec01784428f31c73bdddddd1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3955229887240346880, guid: bff89051ec01784428f31c73bdddddd1, type: 3}
       propertyPath: m_Name
       value: Rain Particle System
       objectReference: {fileID: 0}
+    - target: {fileID: 4169046254467475193, guid: bff89051ec01784428f31c73bdddddd1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f2634b2b35c77314ab7425dda9ad8fd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19709,7 +19717,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: RainManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5741693329219754030, guid: aeb9b6d776291954797a4a0dcee0611e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -20291,12 +20300,6 @@ MonoBehaviour:
   flashDuration: 0.2
   lightningStrikeParticleSystem: {fileID: 0}
   lightningStrikeChance: 0.3
-  dimmedAmbientIntensity: 0.2
-  normalAmbientIntensity: 1
-  mainSceneLight: {fileID: 0}
-  dimmedLightIntensity: 0.3
-  normalLightIntensity: 1
-  additionalSceneLights: []
 --- !u!1001 &957055961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38433,7 +38436,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704015169}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!124 &1704015171
 Behaviour:
   m_ObjectHideFlags: 0
@@ -38502,7 +38505,7 @@ Transform:
   m_GameObject: {fileID: 1704015169}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534014, y: 0.00000015703152, z: -0.000000041134594, w: 0.9673612}
-  m_LocalPosition: {x: 7.258, y: 3.0609999, z: 43.4}
+  m_LocalPosition: {x: 6.9, y: 3.35, z: 43.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
