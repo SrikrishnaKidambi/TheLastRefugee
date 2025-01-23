@@ -6922,9 +6922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd12a0509f7e3479c3dd2a5c5bb60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 30
-  shakeMagnitude: 3
-  delayBeforeShake: 5
+  shakeDuration: 120
+  shakeMagnitude: 0.2
+  delayBeforeShake: 35
 --- !u!1001 &215256328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23546,7 +23546,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 315531136}
-  - {fileID: 1600179710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
