@@ -42565,7 +42565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3214ec5a291847341bef942851ec5358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreintation: {fileID: 0}
+  oreintation: {fileID: 662889582}
   player: {fileID: 633881048}
   playerObj: {fileID: 523708834}
   rb: {fileID: 633881050}
