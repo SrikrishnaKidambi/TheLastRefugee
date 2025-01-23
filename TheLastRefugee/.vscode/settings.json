@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TheLastRefugee.sln"
+    "dotnet.defaultSolution": "TheLastRefugee.sln",
+    "dotnet.preferCSharpExtension": true
 }
