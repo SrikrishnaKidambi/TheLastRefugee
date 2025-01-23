@@ -23546,7 +23546,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 315531136}
-  - {fileID: 1600179710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -42566,7 +42565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3214ec5a291847341bef942851ec5358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreintation: {fileID: 662889582}
+  oreintation: {fileID: 0}
   player: {fileID: 633881048}
   playerObj: {fileID: 523708834}
   rb: {fileID: 633881050}
@@ -54125,7 +54124,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704015169}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!124 &1704015171
 Behaviour:
   m_ObjectHideFlags: 0

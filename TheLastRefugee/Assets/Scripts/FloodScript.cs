@@ -3,7 +3,7 @@ using UnityEngine;
 public class FloodScript : MonoBehaviour
 {
     public float upVelocity = 0.5f;  // Speed at which the flood rises
-    public float maxLimit = 2.5f;  // Maximum height the flood can reach
+    public float maxLimit = 3.5f;  // Maximum height the flood can reach
 
     private bool isRising = false;  // Flag to check if the flood is rising
 
