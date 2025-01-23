@@ -18607,8 +18607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba2ea17d51c67141b494b45930c5d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upVelocity: 0.5
-  maxLimit: 1
+  upVelocity: 0.3
+  maxLimit: 1.8
+  downLimit: -8
+  startRiseTime: 60
+  startLowerTime: 120
 --- !u!1001 &805403131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28065,6 +28068,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: c710f8f110be9fb42b87232b38d9edbc, type: 3}
+    - target: {fileID: 8792494139078419043, guid: 9e44066f1a3229349b002678d0268e65, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8792494139078419043, guid: 9e44066f1a3229349b002678d0268e65, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0

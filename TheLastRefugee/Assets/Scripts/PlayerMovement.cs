@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode runKey = KeyCode.RightShift; // Key to trigger running
+    public KeyCode runKey = KeyCode.LeftShift; // Key to trigger running
 
     [Header("Animator")]
     [SerializeField] private Animator playerAnimator;
