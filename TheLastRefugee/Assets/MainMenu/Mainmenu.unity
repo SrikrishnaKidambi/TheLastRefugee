@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 27139757}
   - component: {fileID: 27139763}
   - component: {fileID: 27139761}
-  - component: {fileID: 27139760}
   - component: {fileID: 27139762}
   m_Layer: 1
   m_Name: Quit
@@ -256,20 +255,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27139755}
   m_CullTransparentMesh: 1
---- !u!114 &27139760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27139755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d94458640d9fc5141870b69295055cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: {x: 3, y: 3, z: 1.8}
-  clickScale: {x: 3, y: 3, z: 1.8}
 --- !u!114 &27139761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +272,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 27139760}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonEffectsWithEventTrigger, Assembly-CSharp
           m_MethodName: OnHoverEnter
           m_Mode: 1
@@ -303,7 +288,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 27139760}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonEffectsWithEventTrigger, Assembly-CSharp
           m_MethodName: OnHoverExit
           m_Mode: 1
@@ -319,7 +304,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 27139760}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonEffectsWithEventTrigger, Assembly-CSharp
           m_MethodName: OnClick
           m_Mode: 1
@@ -691,7 +676,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &788602475
+--- !u!1 &564237292
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -699,23 +684,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 788602478}
-  - component: {fileID: 788602477}
-  - component: {fileID: 788602476}
+  - component: {fileID: 564237295}
+  - component: {fileID: 564237294}
+  - component: {fileID: 564237293}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &788602476
+  m_IsActive: 1
+--- !u!114 &564237293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788602475}
+  m_GameObject: {fileID: 564237292}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
@@ -740,13 +725,13 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!114 &788602477
+--- !u!114 &564237294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788602475}
+  m_GameObject: {fileID: 564237292}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -755,13 +740,13 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!4 &788602478
+--- !u!4 &564237295
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788602475}
+  m_GameObject: {fileID: 564237292}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -781,10 +766,9 @@ GameObject:
   - component: {fileID: 801894002}
   - component: {fileID: 801894005}
   - component: {fileID: 801894004}
-  - component: {fileID: 801894008}
   - component: {fileID: 801894003}
   - component: {fileID: 801894007}
-  - component: {fileID: 801894006}
+  - component: {fileID: 801894008}
   m_Layer: 0
   m_Name: PLAY
   m_TagString: Untagged
@@ -856,7 +840,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1130154656}
+      - m_Target: {fileID: 1130154655}
         m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -865,7 +849,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ControlsPage
+          m_StringArgument: Controls Page
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &801894004
@@ -906,20 +890,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801894001}
   m_CullTransparentMesh: 1
---- !u!114 &801894006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801894001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d94458640d9fc5141870b69295055cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: {x: 3, y: 3, z: 1.8}
-  clickScale: {x: 3, y: 3, z: 1.8}
 --- !u!114 &801894007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,7 +907,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 801894006}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonEffectsWithEventTrigger, Assembly-CSharp
           m_MethodName: OnHoverEnter
           m_Mode: 1
@@ -953,7 +923,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 801894006}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonEffectsWithEventTrigger, Assembly-CSharp
           m_MethodName: OnHoverExit
           m_Mode: 1
@@ -969,7 +939,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 801894006}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonEffectsWithEventTrigger, Assembly-CSharp
           m_MethodName: OnClick
           m_Mode: 1
@@ -994,7 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: {x: 3, y: 3, z: 1}
-  normalScale: {x: 2.5, y: 2.8, z: 1}
+  normalScale: {x: 2.5, y: 2.5, z: 1}
   scaleSpeed: 0.2
 --- !u!1 &832575517
 GameObject:
@@ -1054,7 +1024,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130154651}
-  - component: {fileID: 1130154656}
   - component: {fileID: 1130154654}
   - component: {fileID: 1130154653}
   - component: {fileID: 1130154652}
@@ -1152,18 +1121,6 @@ Canvas:
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1130154655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130154650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89d2a2f729b0f1e41a16e3ddf7010d4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1130154656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1489,4 +1446,4 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1260393762}
-  - {fileID: 788602478}
+  - {fileID: 564237295}
