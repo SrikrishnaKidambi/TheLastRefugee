@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ReduceYPositionAfterDelay : MonoBehaviour
 {
-    public float t1 = 3f;  // Minimum random delay
-    public float t2 = 8f;  // Maximum random delay
+    public float t1 = 50f;  // Minimum random delay
+    public float t2 = 120f;  // Maximum random delay
     public float reduceAmount = 4f;  // Amount by which Y position will reduce each second
     public float reductionDuration = 15f;  // Duration over which to reduce the Y position
 

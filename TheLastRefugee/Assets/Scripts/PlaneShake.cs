@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlaneShake : MonoBehaviour
 {
     public float shakeDuration = 120.0f;        // How long the shake lasts
-    public float shakeMagnitude = 0.2f;       // Intensity of the shake (higher = stronger shake)
+    public float shakeMagnitude = 0.2f;        // Intensity of the shake (higher = stronger shake)
     public float delayBeforeShake = 50.0f;     // Delay before the shake starts
 
     private Vector3 originalPosition;          // Original position of the plane
@@ -64,4 +64,3 @@ public class PlaneShake : MonoBehaviour
         );
     }
 }
-

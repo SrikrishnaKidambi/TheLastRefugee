@@ -21,7 +21,7 @@ public class TriggerSoundAfterDelay : MonoBehaviour
         }
 
         // Trigger the sound effect after 35 seconds
-        Invoke("PlaySoundEffect", 35f);
+        Invoke("PlaySoundEffect", 50f);
     }
 
     void PlaySoundEffect()
