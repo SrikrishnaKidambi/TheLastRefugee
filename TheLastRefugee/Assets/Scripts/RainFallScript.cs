@@ -22,6 +22,7 @@ public class RainFallScript : MonoBehaviour
     public float playerHealth = 100f;
     private float rainStartTime = 0f;
     private bool isHealthDegrading = false;
+    public bool isInsideHouse = false;
 
     [Header("UI Settings")]
     public Text healthText;
@@ -130,19 +131,25 @@ public class RainFallScript : MonoBehaviour
             if (!hasRainCoat)
             {
                 playerHealth -= 0.5f;
+                playerHealth = Mathf.Max(playerHealth, 0); // Clamp health to 0
             }
+
             UpdateHealthUI(); // Update the health display in the Canvas
             Debug.Log($"Player Health: {playerHealth}");
 
             if (playerHealth <= 0)
             {
                 Debug.Log("Player has died due to exposure!");
+                playerHealth = 0; // Ensure health is exactly 0
+                UpdateHealthUI(); // Refresh UI after clamping to zero
                 break;
             }
 
             yield return new WaitForSeconds(1f);
         }
     }
+
+
 
     private void TriggerLightningStrike()
     {

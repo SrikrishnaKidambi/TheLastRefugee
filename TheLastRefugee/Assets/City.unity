@@ -18929,7 +18929,8 @@ MonoBehaviour:
   rainFallScript: {fileID: 1297226526}
   startRiseTime: 80
   healthReductionInterval: 2
-  floodDamage: 30
+  floodDamage: 15
+  messageText: {fileID: 1747974228}
 --- !u!1001 &805403131
 PrefabInstance:
   m_ObjectHideFlags: 0
