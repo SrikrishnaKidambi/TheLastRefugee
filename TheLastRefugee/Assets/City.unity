@@ -8026,6 +8026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectMessage: {fileID: 1781622185}
   messageDisplayTime: 2
+  successBGM: {fileID: 0}
 --- !u!1001 &355219175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13417,6 +13418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectMessage: {fileID: 1781622185}
   messageDisplayTime: 2
+  successBGM: {fileID: 8300000, guid: a67d5aa75d587ba4bbe3214c93d13623, type: 3}
 --- !u!65 &559352261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18924,8 +18926,8 @@ MonoBehaviour:
   upVelocity: 0.3
   maxLimit: 1.8
   playerHeight: 1.3
-  playerHealth: 100
-  startRiseTime: 60
+  rainFallScript: {fileID: 1297226526}
+  startRiseTime: 80
   healthReductionInterval: 2
   floodDamage: 30
 --- !u!1001 &805403131
@@ -23862,11 +23864,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b82e76f4092b7d24aaeecddf36fe8d3b, type: 3}
---- !u!1 &1047587119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4221335440888987701, guid: 919d9788d6b6fd14ab0a21b5d4a9c2bb, type: 3}
-  m_PrefabInstance: {fileID: 2035731659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1050868544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33605,6 +33602,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2509cc5763ca17f4598bf61fd585a93e, type: 3}
+--- !u!4 &1391294001 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1443200435228058213, guid: 919d9788d6b6fd14ab0a21b5d4a9c2bb, type: 3}
+  m_PrefabInstance: {fileID: 2035731659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1393451402
 GameObject:
   m_ObjectHideFlags: 0
@@ -33638,13 +33640,6 @@ MonoBehaviour:
   timerText: {fileID: 2074210727}
 --- !u!4 &1393451404
 Transform:
---- !u!4 &1391294001 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1443200435228058213, guid: 919d9788d6b6fd14ab0a21b5d4a9c2bb, type: 3}
-  m_PrefabInstance: {fileID: 2035731659}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1391294003
-BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -33652,27 +33647,12 @@ BoxCollider:
   m_GameObject: {fileID: 1393451402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 386.61642, y: 405.84872, z: -224.74933}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_GameObject: {fileID: 1047587119}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1396920728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41640,8 +41620,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 269, y: -67}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: 324, y: -67}
+  m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747974228
 MonoBehaviour:
@@ -48733,10 +48713,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4221335440888987701, guid: 919d9788d6b6fd14ab0a21b5d4a9c2bb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1391294003}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 919d9788d6b6fd14ab0a21b5d4a9c2bb, type: 3}
 --- !u!1001 &2036572365
 PrefabInstance:
