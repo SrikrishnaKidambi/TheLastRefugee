@@ -5,7 +5,7 @@ public class DrawOpen : MonoBehaviour
     public float moveDistance = 0.5f; // Distance the drawer moves
     public float moveSpeed = 2.0f; // Speed of the movement
 
-    private bool isOpen = false; // Tracks whether the drawer is open or closed
+    public bool isOpen = false; // Tracks whether the drawer is open or closed
     private Vector3 initialPosition; // Stores the drawer's initial position
     private Vector3 openPosition; // Target position when the drawer is open
 
