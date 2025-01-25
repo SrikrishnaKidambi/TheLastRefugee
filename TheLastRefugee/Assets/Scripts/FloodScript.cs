@@ -13,6 +13,8 @@ public class FloodScript : MonoBehaviour
     [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
     [SerializeField] private TMP_Text evalautionText;
     [SerializeField] private Image evalautionBackground;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
 
     public float startRiseTime = 60f;
     public float healthReductionInterval = 2f;
@@ -120,6 +122,14 @@ public class FloodScript : MonoBehaviour
         if (evalautionText != null)
         {
             evalautionText.gameObject.SetActive(true);
+        }
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+        if (quitButton != null)
+        {
+            quitButton.gameObject.SetActive(true);
         }
         if (unityGeminiScript != null)
         {

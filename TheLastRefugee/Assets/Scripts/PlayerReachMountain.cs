@@ -14,6 +14,8 @@ public class PlayerReachMountain : MonoBehaviour
     [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
     [SerializeField] private TMP_Text evalautionText;
     [SerializeField] private Image evalautionBackground;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
     private void Start()
     {
         if (unityGeminiScript != null)
@@ -76,6 +78,14 @@ public class PlayerReachMountain : MonoBehaviour
         }
         if (evalautionText != null){
             evalautionText.gameObject.SetActive(true);
+        }
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+        if (quitButton != null)
+        {
+            quitButton.gameObject.SetActive(true);
         }
         if (unityGeminiScript != null)
         {
