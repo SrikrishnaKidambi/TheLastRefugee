@@ -23,27 +23,30 @@ public class StopwatchTimer : MonoBehaviour
     {
         InitializeTimer();  // Initialize the timer with the start time
     }
-
-    void Update()
+void Update()
+{
+    if (isTimerRunning && !isPaused && timeRemaining > 0)
     {
-        // Update the timer only if it's running and not paused
-        if (isTimerRunning && !isPaused && timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;  // Decrease time by the frame's time
-            UpdateTimerText();  // Update the display text
-        }
-        else if (timeRemaining <= 0 && isTimerRunning)
-        {
-            // Stop the timer when it reaches 0
-            isTimerRunning = false;
-            timeRemaining = 0;  // Ensure the timer doesn't go negative
-            UpdateTimerText();
-            OnTimerEnd();  // Trigger any actions when the timer finishes
-        }
+        timeRemaining -= Time.deltaTime;
+        UpdateTimerText();
+        Debug.Log("Timer Running: " + timeRemaining); // Check the remaining time
     }
+    else if (timeRemaining <= 0 && isTimerRunning)
+    {
+        isTimerRunning = false;
+        timeRemaining = 0;
+        UpdateTimerText();
+        OnTimerEnd();
+    }
+}
 
     void UpdateTimerText()
     {
+            // Ensure the timer text is visible
+    if (timerText != null)
+    {
+        timerText.gameObject.SetActive(true);  // Ensure it's visible
+    }
         // Convert remaining time to minutes and seconds for display
         int minutes = Mathf.FloorToInt(timeRemaining / 60f);
         int seconds = Mathf.FloorToInt(timeRemaining % 60f);
