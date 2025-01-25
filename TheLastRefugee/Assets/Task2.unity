@@ -32872,7 +32872,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 120
+  timeRemaining: 0
   timerText: {fileID: 448660378}
+  messageText: {fileID: 0}
+  unityGeminiScript: {fileID: 0}
+  evalautionText: {fileID: 0}
+  evalautionBackground: {fileID: 0}
 --- !u!4 &1045786541
 Transform:
   m_ObjectHideFlags: 0
@@ -49659,6 +49664,53 @@ MonoBehaviour:
   shakeDuration: 120
   shakeMagnitude: 0.2
   delayBeforeShake: 50
+--- !u!1 &1515517540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1515517542}
+  - component: {fileID: 1515517541}
+  m_Layer: 0
+  m_Name: GameEndManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1515517541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515517540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088e78d7f56f8824fad311290b9a5585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 120
+  player: {fileID: 633881047}
+  stadiumCollider: {fileID: 1667370113}
+--- !u!4 &1515517542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515517540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517100424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: a1eb827aa0413ab4a8b3b08c0e1a8c56, type: 3}
@@ -61131,6 +61183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404095eb73a7d044d9b7936125079eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!65 &1852345643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61745,6 +61798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4e93ef5470cdd4d988d4ec2940dc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!65 &1878122250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72355,3 +72409,4 @@ SceneRoots:
   - {fileID: 1844906367}
   - {fileID: 1568769712}
   - {fileID: 1682610138}
+  - {fileID: 1515517542}
