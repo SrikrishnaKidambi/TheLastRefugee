@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI; // For UI elements
 
@@ -27,7 +28,9 @@ public class RainFallScript : MonoBehaviour
     [Header("UI Settings")]
     public Text healthText;
     public Text messageText;
-    public UnityAndGeminiV3 unityAndGeminiScript;
+    [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
+    [SerializeField] private TMP_Text evalautionText;
+    [SerializeField] private Image evalautionBackground;
     //public Text messagetext;
 
 
@@ -147,11 +150,13 @@ public class RainFallScript : MonoBehaviour
                 messageText.text = "Player has died due to exposure to rain for prolonged time!";
                 playerHealth = 0; // Ensure health is exactly 0
                 UpdateHealthUI(); // Refresh UI after clamping to zero
+                Invoke(nameof(EnableUnityGeminiScript), 1f);
                 break;
             }
 
             yield return new WaitForSeconds(1f);
         }
+
     }
 
 
@@ -180,6 +185,23 @@ public class RainFallScript : MonoBehaviour
         if (healthText != null)
         {
             healthText.text = $"Health: {Mathf.Max(playerHealth, 0):0}"; // Ensure health doesn't go below 0
+        }
+    }
+
+    private void EnableUnityGeminiScript()
+    {
+        if (evalautionBackground != null)
+        {
+            evalautionBackground.gameObject.SetActive(true);
+        }
+        if (evalautionText != null)
+        {
+            evalautionText.gameObject.SetActive(true);
+        }
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = true;
+            Debug.Log("UnityGemini Script has been enabled");
         }
     }
 }

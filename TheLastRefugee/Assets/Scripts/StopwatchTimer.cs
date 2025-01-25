@@ -19,8 +19,17 @@ public class StopwatchTimer : MonoBehaviour
     // Event when the timer finishes
     public event System.Action OnTimerFinished;
 
+
+    [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
+    [SerializeField] private TMP_Text evalautionText;
+    [SerializeField] private Image evalautionBackground;
+
     void Start()
     {
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = false;
+        }
         InitializeTimer();  // Initialize the timer with the start time
     }
 
@@ -55,8 +64,25 @@ public class StopwatchTimer : MonoBehaviour
         // Trigger custom event or any action after timer ends
         OnTimerFinished?.Invoke();  // Notify any listeners
         messageText.text = "Time Up";
-        Time.timeScale = 0;
+        Invoke(nameof(EnableUnityGeminiScript), 1f);
+        //Time.timeScale = 0;
         Debug.Log("Timer Finished!");
+    }
+    private void EnableUnityGeminiScript()
+    {
+        if (evalautionBackground != null)
+        {
+            evalautionBackground.gameObject.SetActive(true);
+        }
+        if (evalautionText != null)
+        {
+            evalautionText.gameObject.SetActive(true);
+        }
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = true;
+            Debug.Log("UnityGemini Script has been enabled");
+        }
     }
 
     #region Timer Controls

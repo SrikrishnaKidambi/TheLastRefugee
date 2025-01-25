@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class FloodScript : MonoBehaviour
     //public float playerHealth = 100f;
     [SerializeField] private RainFallScript rainFallScript;
     [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
+    [SerializeField] private TMP_Text evalautionText;
+    [SerializeField] private Image evalautionBackground;
 
     public float startRiseTime = 60f;
     public float healthReductionInterval = 2f;
@@ -110,6 +113,14 @@ public class FloodScript : MonoBehaviour
     //}
     private void EnableUnityGeminiScript()
     {
+        if (evalautionBackground != null)
+        {
+            evalautionBackground.gameObject.SetActive(true);
+        }
+        if (evalautionText != null)
+        {
+            evalautionText.gameObject.SetActive(true);
+        }
         if (unityGeminiScript != null)
         {
             unityGeminiScript.enabled = true;
