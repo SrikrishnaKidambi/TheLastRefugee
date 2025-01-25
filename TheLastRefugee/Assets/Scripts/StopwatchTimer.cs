@@ -41,7 +41,7 @@ void Update()
     {
         timeRemaining -= Time.deltaTime;
         UpdateTimerText();
-        Debug.Log("Timer Running: " + timeRemaining); // Check the remaining time
+        //Debug.Log("Timer Running: " + timeRemaining); // Check the remaining time
     }
     else if (timeRemaining <= 0 && isTimerRunning)
     {

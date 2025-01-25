@@ -47,7 +47,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("Rainfall Script Reference")]
     public RainFallScript rainFallScript; // Reference to the RainFallScript
     public StopwatchTimer timerScript;
+    public CycloneScenario scenario;
 
+    public bool isFromCycloneScript=false;
     private void Start()
     {
         // Load the API key from the JSON file
@@ -55,12 +57,38 @@ public class UnityAndGeminiV3 : MonoBehaviour
         apiKey = jsonApiKey.key;
 
         // Generate the player's performance prompt and send it to Gemini
-        string performancePrompt = GeneratePlayerPerformancePrompt();
+        string performancePrompt = GeneratePlayerPerformancePrompt(isFromCycloneScript);
         StartCoroutine(SendPromptRequestToGemini(performancePrompt));
     }
 
-    private string GeneratePlayerPerformancePrompt()
+    private string GeneratePlayerPerformancePrompt(bool isFromCycloneScript)
     {
+        bool hasRainCoat1;
+        string prompt1;
+        if (isFromCycloneScript)
+        {
+            hasRainCoat1 = rainFallScript.hasRainCoat;
+            //bool hasTorch = rainFallScript.hasTorch;
+            //float playerHealth = rainFallScript.playerHealth;
+
+            // Craft a dynamic prompt summarizing the player's actions
+            prompt1 = "Evaluate the player's performance in the following scenario:\n";
+            prompt1 += $"The player was caught in a cyclone with huge winds and had to collect his marksheet from the school as that is the last day for collection. This is the task to be completed.\n";
+            prompt1 += $"The player collected the marksheet: {(scenario.collector.isCollected ? "Yes" : "No")}.\n";
+            prompt1 += $"The player may die is : {(scenario.isGameOver ? "Yes" : "No")}.\n";
+            prompt1 += $"The player collected a raincoat: {(hasRainCoat1 ? "Yes" : "No")}.\n";
+            //prompt += $"The player's health is {playerHealth}.\n";
+            prompt1 += $"The time remaining for the player is {timerScript.timeRemaining}";
+            prompt1 += "The player may die due to the falling of the trees or due to falling of street lights or wind mills on him due to heavy winds";
+            prompt1 += "Based on these details, evaluate the player's performance and give a score out of 100. Include a detailed summary appreciating the precautionary measures he took and what could have been taken for better escape of the disaster. Consider the fact that here marksheet collection is used as a mandatory task so that player will go out and get stuck in disaster and use their brain to get out of it and also accomplish the task. Don't defeat this purpose.";
+            prompt1 += "Focus more on the aspect of educating the player with possible methods of the survival rather than criticizing as this is being generated in a game";
+            prompt1 += "The length of the response should be about 7 to 8 lines at maximum and summary should be very clear and should create an impact on the player";
+            prompt1 += "The response should be displayed in such a way that first part should be acknowledging and appreciating the measures describing them and steps taken by the player and teh remaining part should be the precautions missed by the player.";
+            prompt1 += "The response should be in the form of bullet points and thought provoking";
+            prompt1 += "Also include the score you evalauated in the starting point and remove the stars in the response";
+
+            return prompt1;
+        }
         // Retrieve player data from the RainFallScript
         bool hasMedicine = rainFallScript.hasMedicine;
         bool hasRainCoat = rainFallScript.hasRainCoat;
@@ -85,7 +113,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         return prompt;
     }
 
-    private IEnumerator SendPromptRequestToGemini(string promptText)
+    public IEnumerator SendPromptRequestToGemini(string promptText)
     {
         string url = $"{apiEndpoint}?key={apiKey}";
 

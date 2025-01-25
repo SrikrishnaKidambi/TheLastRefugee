@@ -181,7 +181,7 @@ public class Task3PlayerMovement : MonoBehaviour
         float x = Random.Range(-1f, 1f);
         float z = Random.Range(-1f, 1f);
         windDirection = new Vector3(x, 0f, z).normalized; // Normalize for consistent strength
-        Debug.Log($"New wind direction: {windDirection}");
+        //Debug.Log($"New wind direction: {windDirection}");
     }
 
     private void ApplyWindEffect()
