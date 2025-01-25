@@ -6,19 +6,29 @@ public class FloodScript : MonoBehaviour
     public float upVelocity = 0.5f;
     public float maxLimit = 3.5f;
     public float playerHeight = 1.3f;
+    public bool reachedHighAltitude = false;
+    //public float playerHealth = 100f;
     [SerializeField] private RainFallScript rainFallScript;
+    [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
 
     public float startRiseTime = 60f;
     public float healthReductionInterval = 2f;
     public float floodDamage = 30f;
+    public Text messageText;
+
+    //public Text healthText; // Reference to the UI Text object
 
     private bool isRising = false;
     private float timer = 0f;
-    public Text messageText;
 
     void Start()
     {
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = false;
+        }
         InvokeRepeating(nameof(CheckAndApplyFloodDamage), healthReductionInterval, healthReductionInterval);
+        //UpdateHealthUI(); // Initialize the health display
     }
 
     void Update()
@@ -32,11 +42,11 @@ public class FloodScript : MonoBehaviour
 
         if (isRising)
         {
-            IncreaseFlood();
+            increaseFlood();
         }
     }
 
-    void IncreaseFlood()
+    void increaseFlood()
     {
         Vector3 currentPosition = transform.position;
 
@@ -63,31 +73,47 @@ public class FloodScript : MonoBehaviour
 
         if (floodHeight > playerHeight)
         {
-            ApplyFloodDamage();
+            if (!reachedHighAltitude)
+            {
+                Debug.Log("Player has not reached high altitude. Applying flood damage");
+                ApplyFloodDamage();
+            }
         }
     }
 
     void ApplyFloodDamage()
     {
         rainFallScript.playerHealth -= floodDamage;
-        rainFallScript.playerHealth = Mathf.Max(rainFallScript.playerHealth, 0); // Ensure health doesn't go below zero
-
-        // Update the health display
-        //rainFallScript.UpdateHealthUI();
+        rainFallScript.healthText.text = $"Health {rainFallScript.playerHealth}";
 
         Debug.Log($"Flood damage applied. Player health: {rainFallScript.playerHealth}");
 
         if (rainFallScript.playerHealth <= 0f)
         {
-            messageText.text = "Health:0";
+            rainFallScript.healthText.text = "Health : 0";
             Debug.Log("Player has died!");
-            if (rainFallScript.playerHealth - 15 <= 0f)
-            {
-                rainFallScript.playerHealth = 0f;
-            }
+            messageText.text = "GAME OVER!! You are wasted.";
+            Invoke(nameof(EnableUnityGeminiScript),1f);
+             
             CancelInvoke(nameof(CheckAndApplyFloodDamage));
+            // Additional death logic here
+            //Time.timeScale = 0f; 
+        }
+    }
 
-            // Additional death logic can be added here, e.g., showing a game-over screen
+    //void UpdateHealthUI()
+    //{
+    //    if (healthText != null)
+    //    {
+    //        healthText.text = $"Health: {Mathf.Max(playerHealth, 0):0}";
+    //    }
+    //}
+    private void EnableUnityGeminiScript()
+    {
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = true;
+            Debug.Log("UnityGemini Script has been enabled");
         }
     }
 }

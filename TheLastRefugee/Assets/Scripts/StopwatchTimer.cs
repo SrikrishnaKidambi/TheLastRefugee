@@ -1,5 +1,6 @@
 using UnityEngine;
-using TMPro;  // Import TextMeshPro namespace
+using TMPro;    // Import TextMeshPro namespace
+using UnityEngine.UI;  
 
 public class StopwatchTimer : MonoBehaviour
 {
@@ -7,14 +8,14 @@ public class StopwatchTimer : MonoBehaviour
     [Tooltip("Time in seconds to start the timer. Default is 120 seconds (2 minutes).")]
     public float startTime = 120f;  // Start time in seconds (default 2 minutes)
 
-    private float timeRemaining;
+    public float timeRemaining;
     private bool isTimerRunning = false;
     private bool isPaused = false;
 
     [Header("UI Elements")]
     [Tooltip("The UI TextMeshPro element to display the timer.")]
     public TMP_Text timerText;  // Reference to the UI TextMeshPro element for displaying the timer
-
+    public Text messageText;
     // Event when the timer finishes
     public event System.Action OnTimerFinished;
 
@@ -53,6 +54,8 @@ public class StopwatchTimer : MonoBehaviour
     {
         // Trigger custom event or any action after timer ends
         OnTimerFinished?.Invoke();  // Notify any listeners
+        messageText.text = "Time Up";
+        Time.timeScale = 0;
         Debug.Log("Timer Finished!");
     }
 

@@ -26,6 +26,10 @@ public class RainFallScript : MonoBehaviour
 
     [Header("UI Settings")]
     public Text healthText;
+    public Text messageText;
+    public UnityAndGeminiV3 unityAndGeminiScript;
+    //public Text messagetext;
+
 
     [Header("Props Settings")]
     public bool hasMedicine = false;
@@ -128,7 +132,7 @@ public class RainFallScript : MonoBehaviour
     {
         while (isRaining && playerHealth > 0)
         {
-            if (!hasRainCoat)
+            if (!hasRainCoat && !isInsideHouse)
             {
                 playerHealth -= 0.5f;
                 playerHealth = Mathf.Max(playerHealth, 0); // Clamp health to 0
@@ -140,6 +144,7 @@ public class RainFallScript : MonoBehaviour
             if (playerHealth <= 0)
             {
                 Debug.Log("Player has died due to exposure!");
+                messageText.text = "Player has died due to exposure to rain for prolonged time!";
                 playerHealth = 0; // Ensure health is exactly 0
                 UpdateHealthUI(); // Refresh UI after clamping to zero
                 break;
@@ -170,7 +175,7 @@ public class RainFallScript : MonoBehaviour
         }
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         if (healthText != null)
         {
