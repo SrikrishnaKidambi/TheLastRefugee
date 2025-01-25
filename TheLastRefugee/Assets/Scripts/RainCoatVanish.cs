@@ -6,9 +6,12 @@ public class RainCoatVanish : MonoBehaviour
     [SerializeField] private RainFallScript rainFallScript;
     [SerializeField] private Text collectMessage;
     [SerializeField] private float messageDisplayTime = 2f;
+    [SerializeField] private LeftCupboardController leftCupboardController;
+    [SerializeField] private RightCupboardController rightCupboardController;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && (leftCupboardController.isOpen) || (rightCupboardController.isOpen))
         {
             gameObject.SetActive(false);
             rainFallScript.hasRainCoat = true;
