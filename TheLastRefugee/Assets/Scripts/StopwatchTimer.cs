@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement; // Add this at the top of your script
 using UnityEngine;
 using TMPro;  // Import TextMeshPro namespace
 
@@ -57,6 +58,14 @@ void Update()
         // Trigger custom event or any action after timer ends
         OnTimerFinished?.Invoke();  // Notify any listeners
         Debug.Log("Timer Finished!");
+
+
+
+
+    // Load a new scene when the timer reaches 0
+    SceneManager.LoadScene("Endscreen");  // Replace "YourSceneName" with the name of your scene
+
+
     }
 
     #region Timer Controls
