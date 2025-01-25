@@ -1,69 +1,93 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloodScript : MonoBehaviour
 {
-    public float upVelocity = 0.5f;  // Speed at which the flood rises
-    public float maxLimit = 3.5f;  // Maximum height the flood can reach
+    public float upVelocity = 0.5f;
+    public float maxLimit = 3.5f;
+    public float playerHeight = 1.3f;
+    [SerializeField] private RainFallScript rainFallScript;
 
-    private bool isRising = false;  // Flag to check if the flood is rising
+    public float startRiseTime = 60f;
+    public float healthReductionInterval = 2f;
+    public float floodDamage = 30f;
+
+    private bool isRising = false;
+    private float timer = 0f;
+    public Text messageText;
+
+    void Start()
+    {
+        InvokeRepeating(nameof(CheckAndApplyFloodDamage), healthReductionInterval, healthReductionInterval);
+    }
 
     void Update()
     {
-        // If "F" is pressed, start rising the flood if it's not already rising
-        if (Input.GetKeyDown(KeyCode.F) && !isRising)
+        timer += Time.deltaTime;
+
+        if (timer >= startRiseTime && !isRising)
         {
-            isRising = true;  // Start rising the flood
+            isRising = true;
         }
 
-        // If "R" is pressed, the flood lowers
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            isRising = false;  // Stop the rising (reset the flag)
-            lowerFlood();      // Call the function to lower the flood
-        }
-
-        // Continuously rise the flood until the maxLimit is reached
         if (isRising)
         {
-            increaseFlood();
+            IncreaseFlood();
         }
     }
 
-    void increaseFlood()
+    void IncreaseFlood()
     {
-        // Get the current position of the flood object
         Vector3 currentPosition = transform.position;
 
-        // If the flood is below the maxLimit, increase the Y position
         if (currentPosition.y < maxLimit)
         {
-            // Calculate the change in the Y direction
             currentPosition.y += upVelocity * Time.deltaTime;
 
-            // Ensure the flood doesn't go past the maxLimit
             if (currentPosition.y > maxLimit)
             {
-                currentPosition.y = maxLimit;  // Set it exactly to maxLimit
+                currentPosition.y = maxLimit;
             }
 
-            // Apply the new position to the flood object
             transform.position = currentPosition;
         }
         else
         {
-            isRising = false;  // Stop rising once we reach the maxLimit
+            isRising = false;
         }
     }
 
-    void lowerFlood()
+    void CheckAndApplyFloodDamage()
     {
-        // Get the current position of the flood object
-        Vector3 currentPosition = transform.position;
+        float floodHeight = transform.position.y;
 
-        // Calculate the change in the Y direction for lowering
-        currentPosition.y -= upVelocity * Time.deltaTime;
+        if (floodHeight > playerHeight)
+        {
+            ApplyFloodDamage();
+        }
+    }
 
-        // Apply the new position to the flood object
-        transform.position = currentPosition;
+    void ApplyFloodDamage()
+    {
+        rainFallScript.playerHealth -= floodDamage;
+        rainFallScript.playerHealth = Mathf.Max(rainFallScript.playerHealth, 0); // Ensure health doesn't go below zero
+
+        // Update the health display
+        //rainFallScript.UpdateHealthUI();
+
+        Debug.Log($"Flood damage applied. Player health: {rainFallScript.playerHealth}");
+
+        if (rainFallScript.playerHealth <= 0f)
+        {
+            messageText.text = "Health:0";
+            Debug.Log("Player has died!");
+            if (rainFallScript.playerHealth - 15 <= 0f)
+            {
+                rainFallScript.playerHealth = 0f;
+            }
+            CancelInvoke(nameof(CheckAndApplyFloodDamage));
+
+            // Additional death logic can be added here, e.g., showing a game-over screen
+        }
     }
 }

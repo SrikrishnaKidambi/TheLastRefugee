@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; // For UI elements
 
 public class RainFallScript : MonoBehaviour
 {
@@ -8,17 +9,34 @@ public class RainFallScript : MonoBehaviour
     public float rainDelay = 5f;
 
     [Header("Thunder Settings")]
-    public Light flashLight; // A light to simulate lightning flashes
-    public AudioClip thunderSound; // Thunder sound effect
-    public float thunderIntervalMin = 5f; // Minimum time between thunder
-    public float thunderIntervalMax = 15f; // Maximum time between thunder
-    public float flashDuration = 0.2f; // Duration of lightning flash
-    public ParticleSystem lightningStrikeParticleSystem; // The particle system for lightning strikes
-    public float lightningStrikeChance = 0.3f; // 30% chance of a strike with thunder
+    public Light flashLight;
+    public AudioClip thunderSound;
+    public float thunderIntervalMin = 5f;
+    public float thunderIntervalMax = 15f;
+    public float flashDuration = 0.2f;
+    public ParticleSystem lightningStrikeParticleSystem;
+    public float lightningStrikeChance = 0.3f;
+
+    [Header("Player Settings")]
+    public GameObject player;
+    public float playerHealth = 100f;
+    private float rainStartTime = 0f;
+    private bool isHealthDegrading = false;
+    public bool isInsideHouse = false;
+
+    [Header("UI Settings")]
+    public Text healthText;
+
+    [Header("Props Settings")]
+    public bool hasMedicine = false;
+    public bool hasRainCoat = false;
+    public bool hasTorch = false;
+
+    private float timeElapsed = 0f;
+    private bool isRaining = false;
 
     private void Start()
     {
-        // Stop rain, thunder, and lightning effects at the start
         if (rainParticleSystem != null)
         {
             rainParticleSystem.Stop();
@@ -30,15 +48,37 @@ public class RainFallScript : MonoBehaviour
         if (flashLight != null)
         {
             flashLight.enabled = false;
-            flashLight.intensity = 0.5f; // Set the initial intensity of the flashlight
+            flashLight.intensity = 0.5f;
         }
         if (lightningStrikeParticleSystem != null)
         {
             lightningStrikeParticleSystem.Stop();
         }
 
-        // Start the rain after a delay
-        StartCoroutine(StartRainAfterDelay());
+        // Update the health UI at the start
+        UpdateHealthUI();
+    }
+
+    private void Update()
+    {
+        timeElapsed += Time.deltaTime;
+
+        if (!isRaining && timeElapsed >= 20f)
+        {
+            isRaining = true;
+            rainStartTime = Time.time;
+            StartCoroutine(StartRainAfterDelay());
+        }
+
+        if (isRaining && !isHealthDegrading && Time.time - rainStartTime > 30f)
+        {
+            isHealthDegrading = true;
+            StartCoroutine(DegradeHealthOverTime());
+        }
+        if (hasMedicine)
+        {
+            Debug.Log("Player has collected the medicine!!");
+        }
     }
 
     private System.Collections.IEnumerator StartRainAfterDelay()
@@ -53,41 +93,63 @@ public class RainFallScript : MonoBehaviour
         if (rainAudioSource != null)
         {
             rainAudioSource.Play();
-            Debug.Log("Rain audio is playing."); // Debug to confirm playback
+            Debug.Log("Rain audio is playing.");
         }
 
         Debug.Log("Rain Started!");
         StartCoroutine(ThunderstormRoutine());
     }
 
-
     private System.Collections.IEnumerator ThunderstormRoutine()
     {
         while (true)
         {
-            // Wait for a random interval between thunder effects
             float interval = Random.Range(thunderIntervalMin, thunderIntervalMax);
             yield return new WaitForSeconds(interval);
 
-            // Trigger lightning flash
             if (flashLight != null)
             {
                 StartCoroutine(LightningFlash());
             }
 
-            // Play thunder sound
             if (thunderSound != null)
             {
                 AudioSource.PlayClipAtPoint(thunderSound, Camera.main.transform.position);
             }
 
-            // Trigger the lightning strike particle effect occasionally
             if (Random.value < lightningStrikeChance)
             {
                 TriggerLightningStrike();
             }
         }
     }
+
+    private System.Collections.IEnumerator DegradeHealthOverTime()
+    {
+        while (isRaining && playerHealth > 0)
+        {
+            if (!hasRainCoat)
+            {
+                playerHealth -= 0.5f;
+                playerHealth = Mathf.Max(playerHealth, 0); // Clamp health to 0
+            }
+
+            UpdateHealthUI(); // Update the health display in the Canvas
+            Debug.Log($"Player Health: {playerHealth}");
+
+            if (playerHealth <= 0)
+            {
+                Debug.Log("Player has died due to exposure!");
+                playerHealth = 0; // Ensure health is exactly 0
+                UpdateHealthUI(); // Refresh UI after clamping to zero
+                break;
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+
 
     private void TriggerLightningStrike()
     {
@@ -102,9 +164,17 @@ public class RainFallScript : MonoBehaviour
     {
         if (flashLight != null)
         {
-            flashLight.enabled = true; // Turn on the flash light
+            flashLight.enabled = true;
             yield return new WaitForSeconds(flashDuration);
-            flashLight.enabled = false; // Turn off the flash light
+            flashLight.enabled = false;
+        }
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (healthText != null)
+        {
+            healthText.text = $"Health: {Mathf.Max(playerHealth, 0):0}"; // Ensure health doesn't go below 0
         }
     }
 }
