@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement; // Add this at the top of your script
 using UnityEngine;
 using TMPro;    // Import TextMeshPro namespace
 using UnityEngine.UI;  
@@ -32,27 +33,30 @@ public class StopwatchTimer : MonoBehaviour
         }
         InitializeTimer();  // Initialize the timer with the start time
     }
-
-    void Update()
+void Update()
+{
+    if (isTimerRunning && !isPaused && timeRemaining > 0)
     {
-        // Update the timer only if it's running and not paused
-        if (isTimerRunning && !isPaused && timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;  // Decrease time by the frame's time
-            UpdateTimerText();  // Update the display text
-        }
-        else if (timeRemaining <= 0 && isTimerRunning)
-        {
-            // Stop the timer when it reaches 0
-            isTimerRunning = false;
-            timeRemaining = 0;  // Ensure the timer doesn't go negative
-            UpdateTimerText();
-            OnTimerEnd();  // Trigger any actions when the timer finishes
-        }
+        timeRemaining -= Time.deltaTime;
+        UpdateTimerText();
+        Debug.Log("Timer Running: " + timeRemaining); // Check the remaining time
     }
+    else if (timeRemaining <= 0 && isTimerRunning)
+    {
+        isTimerRunning = false;
+        timeRemaining = 0;
+        UpdateTimerText();
+        OnTimerEnd();
+    }
+}
 
     void UpdateTimerText()
     {
+            // Ensure the timer text is visible
+    if (timerText != null)
+    {
+        timerText.gameObject.SetActive(true);  // Ensure it's visible
+    }
         // Convert remaining time to minutes and seconds for display
         int minutes = Mathf.FloorToInt(timeRemaining / 60f);
         int seconds = Mathf.FloorToInt(timeRemaining % 60f);
@@ -67,6 +71,14 @@ public class StopwatchTimer : MonoBehaviour
         Invoke(nameof(EnableUnityGeminiScript), 1f);
         //Time.timeScale = 0;
         Debug.Log("Timer Finished!");
+
+
+
+
+    // Load a new scene when the timer reaches 0
+    SceneManager.LoadScene("Endscreen");  // Replace "YourSceneName" with the name of your scene
+
+
     }
     private void EnableUnityGeminiScript()
     {

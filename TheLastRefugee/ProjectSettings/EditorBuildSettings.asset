@@ -17,15 +17,21 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Objective.unity
     guid: cb2fb6cfa34736041bb6faacc62b7873
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Controls Page.unity
     guid: 0424b72998b2bfb49b17b2e766157e67
+  - enabled: 1
+    path: Assets/Controls Page.unity
+    guid: 196cb0c438d829446a216d1df4b0c4fa
   - enabled: 1
     path: Assets/Task2.unity
     guid: 053c9f11c53d57c4fa6b05cd8bc5d6a9
   - enabled: 0
     path: Assets/MainMenu/Scenes/MainMenu.unity
     guid: 437c7ecfcdacc064f8cb642c7f57a120
+  - enabled: 1
+    path: Assets/Endscreen.unity
+    guid: e5136b972429f42488580a104199ea6f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
