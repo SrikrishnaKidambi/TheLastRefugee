@@ -20955,7 +20955,7 @@ MonoBehaviour:
   airMultiplier: 0.25
   jumpForce: 5
   jumpKey: 32
-  runKey: 303
+  runKey: 304
   playerAnimator: {fileID: 1451661244}
   playerHeight: 2
   whatIsGround:
