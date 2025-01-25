@@ -17,6 +17,7 @@ public class CycloneScenario : MonoBehaviour
     public float gameTimeLimit = 180f; // Game time limit in seconds (3 minutes)
     private float startTime;
     [SerializeField] private Collector collector;
+    [SerializeField] private RainFallScript rainFallScript;
 
     void Start()
     {
@@ -74,11 +75,11 @@ public class CycloneScenario : MonoBehaviour
                 {
                     DisplayMessage("You are going close to the trees. Please stay away!");
                 }
-                else if (parentName == "WindMills")
+                else if (parentName == "StreetLights")
                 {
                     DisplayMessage("You are going close to the poles. Please stay away!");
                 }
-                else if (parentName == "StreetLights")
+                else if (parentName == "WindMills")
                 {
                     DisplayMessage("You are going close to the windmills. Please stay away!");
                 }
