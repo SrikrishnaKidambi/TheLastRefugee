@@ -1,55 +1,35 @@
+using TMPro;
 using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    public GameObject collectedMessage; // UI element to show "Collected"
+    public TMP_Text collectedMessage; // UI element to show the message
     private GameObject nearbyPad;       // Reference to the pad object the player is near
-    public bool isCollected = false;   // Boolean to track if the pad is collected
-
-    void Update()
-    {
-        // Check if the player presses 'C' and is near the pad
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (nearbyPad != null && !isCollected)
-            {
-                CollectPad();
-            }
-        }
-    }
+    public bool isCollected = false;    // Boolean to track if the pad is collected
 
     private void OnTriggerEnter(Collider other)
     {
         // Check if the player enters the range of a pad
-        if (other.CompareTag("Collectible"))
+        if (other.CompareTag("Collectible") && !isCollected)
         {
             nearbyPad = other.gameObject;
+            isCollected = true;
+            nearbyPad.SetActive(false);
+            ShowDisplayMessage();
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void ShowDisplayMessage()
     {
-        // Check if the player exits the range of the pad
-        if (other.CompareTag("Collectible"))
-        {
-            nearbyPad = null;
-        }
+        
+        collectedMessage.text = "You collected the exam answer script successfully";
+        collectedMessage.gameObject.SetActive(true);
+        // Hide the message after 2 seconds
+        Invoke(nameof(HideCollectedMessage), 2f);
     }
 
-    private void CollectPad()
+    private void HideCollectedMessage()
     {
-        // Mark the pad as collected
-        isCollected = true;
-
-        // Optional: Display "Collected" message
-        if (collectedMessage != null)
-        {
-            collectedMessage.SetActive(true);
-        }
-
-        // Make the pad vanish
-        Destroy(nearbyPad);
-
-        // Add additional logic (e.g., increase score) here
+        collectedMessage.gameObject.SetActive(false);
     }
 }
