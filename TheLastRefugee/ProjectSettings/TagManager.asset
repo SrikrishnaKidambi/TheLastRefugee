@@ -8,6 +8,7 @@ TagManager:
   - draw01
   - draw
   - Collectible
+  - Danger
   layers:
   - Default
   - TransparentFX

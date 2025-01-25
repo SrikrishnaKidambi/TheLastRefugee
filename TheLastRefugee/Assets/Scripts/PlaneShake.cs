@@ -3,12 +3,12 @@ using UnityEngine;
 public class PlaneShake : MonoBehaviour
 {
     public float shakeDuration = 120.0f;        // How long the shake lasts
-    public float shakeMagnitude = 0.2f;       // Intensity of the shake (higher = stronger shake)
+    public float shakeMagnitude = 0.2f;        // Intensity of the shake (higher = stronger shake)
     public float delayBeforeShake = 50.0f;     // Delay before the shake starts
 
-    private Vector3 originalPosition;         // Original position of the plane
-    private float shakeTimer = 0f;            // Timer to control shake duration
-    private bool isShaking = false;           // Flag to control if shaking is active
+    private Vector3 originalPosition;          // Original position of the plane
+    private float shakeTimer = 0f;             // Timer to control shake duration
+    private bool isShaking = false;            // Flag to control if shaking is active
 
     void Start()
     {
@@ -26,11 +26,11 @@ public class PlaneShake : MonoBehaviour
         {
             shakeTimer += Time.deltaTime;
 
-            // Apply shake to position (only in the XZ plane)
-            Vector3 shakePosition = originalPosition + new Vector3(
-                Random.Range(-shakeMagnitude, shakeMagnitude), // Shake along X-axis
-                0,                                             // No movement along Y-axis
-                Random.Range(-shakeMagnitude, shakeMagnitude)  // Shake along Z-axis
+            // Apply shake to the XZ plane while preserving the current Y position
+            Vector3 shakePosition = new Vector3(
+                originalPosition.x + Random.Range(-shakeMagnitude, shakeMagnitude), // Shake along X-axis
+                transform.position.y,                                             // Preserve current Y position
+                originalPosition.z + Random.Range(-shakeMagnitude, shakeMagnitude) // Shake along Z-axis
             );
 
             // Update the plane's position
@@ -55,6 +55,12 @@ public class PlaneShake : MonoBehaviour
     private void StopShake()
     {
         isShaking = false;
-        transform.position = originalPosition;
+
+        // Reset X and Z to their original positions while keeping the current Y
+        transform.position = new Vector3(
+            originalPosition.x,
+            transform.position.y,  // Preserve current Y position
+            originalPosition.z
+        );
     }
 }
