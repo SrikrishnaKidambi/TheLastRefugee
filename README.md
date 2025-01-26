@@ -7,4 +7,4 @@
 6) CS23B060- Anvay Joshi
 
 # Google Drive link for gameplay video :-
-[Game Play Video](https://drive.google.com/file/d/18Jxmp5eq5AK8CcX48NtN6NpnTOaDLVbI/view?usp=sharing) 
+[Game Play Video](https://drive.google.com/file/d/1vYG40JCu-MUyMzdg8C1IQ5JbHPK-NT4H/view?usp=sharing) 
