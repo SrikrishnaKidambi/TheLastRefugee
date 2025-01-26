@@ -14113,8 +14113,8 @@ MonoBehaviour:
   unityGeminiScript: {fileID: 1347789519}
   evalautionText: {fileID: 1978103991}
   evalautionBackground: {fileID: 642265994}
-  restartButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  restartButton: {fileID: 476498989}
+  quitButton: {fileID: 557545648}
   rainFallScript: {fileID: 1297226526}
 --- !u!65 &559352261
 BoxCollider:
