@@ -57,6 +57,8 @@ public class CycloneScenario : MonoBehaviour
     private void TriggerFallAnimation(GameObject obj)
     {
         Animator animator = obj.GetComponent<Animator>();
+        AudioSource audioSource = obj.GetComponent<AudioSource>();
+
         if (animator != null)
         {
             string parentName = obj.transform.parent.name;
@@ -72,6 +74,14 @@ public class CycloneScenario : MonoBehaviour
             else if (parentName == "StreetLights")
             {
                 animator.Play("LightAnimation");
+            }
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.LogWarning($"No AudioSource attached to {obj.name}. Audio will not play.");
             }
         }
     }
