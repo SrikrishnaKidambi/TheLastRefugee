@@ -16,6 +16,8 @@ public class PlayerReachMountain : MonoBehaviour
     [SerializeField] private Image evalautionBackground;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button quitButton;
+
+    [SerializeField] private RainFallScript rainFallScript;
     private void Start()
     {
         if (unityGeminiScript != null)
@@ -36,8 +38,11 @@ public class PlayerReachMountain : MonoBehaviour
         {
             Debug.Log("Player has reached the mountain.");
             ShowMessage("You have completed the game successfully!");
-            PlaySuccessAudio(); // Play the audio clip
-            hasPlayedSuccessAudio = true; // Set the flag to true to prevent further playback
+            if (rainFallScript.hasMedicine)
+            {
+                PlaySuccessAudio(); // Play the audio clip
+                hasPlayedSuccessAudio = true; // Set the flag to true to prevent further playback
+            }
             Invoke(nameof(EnableUnityGeminiScript), messageDisplayTime);
             //Time.timeScale = 0f;
         }

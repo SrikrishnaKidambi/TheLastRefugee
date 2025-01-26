@@ -29113,7 +29113,6 @@ MonoBehaviour:
   houseProximityRange: 3
   gameTimeLimit: 180
   collector: {fileID: 633881051}
-  rainFallScript: {fileID: 1297226526}
   evaluationText: {fileID: 445769974}
   evaluationImage: {fileID: 736537394}
   restartButton: {fileID: 1787034840}
