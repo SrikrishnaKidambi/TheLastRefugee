@@ -48,7 +48,7 @@ public class CycloneScenario : MonoBehaviour
             // Trigger fall animation and game-over at count 5
             else if (proximityCounter == 5)
             {
-                DisplayMessage("Game Over! The tree has fallen due to the cyclone and player may dies.");
+                DisplayMessage("Game Over! The tree has fallen due to the cyclone and player may die.");
                 TriggerFallAnimation(obj);
             }
         }
@@ -91,12 +91,31 @@ public class CycloneScenario : MonoBehaviour
         messageText.text = message;
         messageText.gameObject.SetActive(true);
 
-        // Hide the message after 2 seconds
-        Invoke(nameof(HideMessage), 5f);
+        if (message.Contains("Game Over"))
+        {
+            // Pause the game after a short delay to allow the message to display
+            Invoke(nameof(PauseGame), 0.1f);
+        }
+        else
+        {
+            // Hide the message after 5 seconds for non-Game Over messages
+            Invoke(nameof(HideMessage), 5f);
+        }
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0; // Pause the game
     }
 
     private void HideMessage()
     {
         messageText.gameObject.SetActive(false);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1; // Resume the game
+        messageText.gameObject.SetActive(false); // Hide the message
     }
 }
