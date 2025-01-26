@@ -27,3 +27,5 @@ public class ChangeSceneOnContact : MonoBehaviour
         }
     }
 }
+
+//FINAL COMMIT : 22:07 26-01-2025
