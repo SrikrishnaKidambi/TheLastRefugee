@@ -1,9 +1,16 @@
 using UnityEngine;
 using TMPro;
 using System;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 public class CycloneScenario : MonoBehaviour
 {
+
+    //[Header("JSON API Configuration")]
+    //public TextAsset jsonApi;
+    //private string apiKey = "";
+    //private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
     public TMP_Text messageText;        // Reference to UI text for displaying messages
     public float proximityRange = 5f;  // Range to detect proximity to objects
     [SerializeField] private int proximityCounter = 0;  // Counter to track how many times the player gets close
@@ -17,9 +24,20 @@ public class CycloneScenario : MonoBehaviour
     public float gameTimeLimit = 180f; // Game time limit in seconds (3 minutes)
     private float startTime;
     [SerializeField] private Collector collector;
+    [SerializeField] private RainFallScript rainFallScript;
 
+    //[SerializeField] private UnityAndGeminiV3 unityAndGemini;
+    [SerializeField] private TMP_Text evaluationText;
+    [SerializeField] private UnityEngine.UI.Image evaluationImage;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private RainFallScript rainFallScript;
+    [SerializeField] private UnityAndGeminiV3 unityAndGemini;
     void Start()
     {
+        //UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
+        //apiKey = jsonApiKey.key;
+        
         startTime = Time.time; // Record the start time of the game
     }
 
@@ -74,11 +92,11 @@ public class CycloneScenario : MonoBehaviour
                 {
                     DisplayMessage("You are going close to the trees. Please stay away!");
                 }
-                else if (parentName == "WindMills")
+                else if (parentName == "StreetLights")
                 {
                     DisplayMessage("You are going close to the poles. Please stay away!");
                 }
-                else if (parentName == "StreetLights")
+                else if (parentName == "WindMills")
                 {
                     DisplayMessage("You are going close to the windmills. Please stay away!");
                 }
@@ -89,6 +107,7 @@ public class CycloneScenario : MonoBehaviour
                 if (parentName == "Trees")
                 {
                     GameOver("Game Over! The tree has fallen due to the cyclone. You may die.");
+
                 }
                 else if (parentName == "WindMills")
                 {
@@ -161,6 +180,8 @@ public class CycloneScenario : MonoBehaviour
             isGameOver = true;
             DisplayMessage(message);
             Debug.Log("Game Over");
+
+            Invoke(nameof(EnableUnityGeminiScript), 5f);
         }
     }
 
@@ -171,11 +192,37 @@ public class CycloneScenario : MonoBehaviour
             isGameOver = true;
             DisplayMessage("Congratulations! You've reached the house and survived the cyclone!");
             Debug.Log("Player Wins!");
-
+            Invoke(nameof(EnableUnityGeminiScript), 5f);
             if (winAudio != null)
             {
                 winAudio.Play();
             }
+        }
+    }
+    private void EnableUnityGeminiScript()
+    {
+        unityAndGemini.isFromCycloneScript = true;
+        if (evaluationImage != null)
+        {
+            evaluationImage.gameObject.SetActive(true);
+        }
+        if (evaluationText != null)
+        {
+            evaluationText.gameObject.SetActive(true);
+        }
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+        if (quitButton != null)
+        {
+            quitButton.gameObject.SetActive(true);
+        }
+        if (unityAndGemini != null)
+        {
+            unityAndGemini.enabled = true;
+            //Invoke(nameof(EnableUnityGeminiScript), 1f);
+            Debug.Log("UnityGemini Script has been enabled");
         }
     }
 }
