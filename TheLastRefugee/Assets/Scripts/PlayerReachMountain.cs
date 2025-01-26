@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,19 @@ public class PlayerReachMountain : MonoBehaviour
     [SerializeField] private AudioClip successBGM;        // The audio clip to play
 
     private AudioSource audioSource;                      // Reference to the AudioSource component
+    private bool hasPlayedSuccessAudio = false;           // Flag to check if the audio has been played
 
+    [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
+    [SerializeField] private TMP_Text evalautionText;
+    [SerializeField] private Image evalautionBackground;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
     private void Start()
     {
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = false;
+        }
         // Ensure the GameObject has an AudioSource and assign it
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
@@ -21,11 +32,14 @@ public class PlayerReachMountain : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasPlayedSuccessAudio) // Check if audio has not been played
         {
-            Debug.Log("Player has entered the trigger.");
+            Debug.Log("Player has reached the mountain.");
             ShowMessage("You have completed the game successfully!");
             PlaySuccessAudio(); // Play the audio clip
+            hasPlayedSuccessAudio = true; // Set the flag to true to prevent further playback
+            Invoke(nameof(EnableUnityGeminiScript), messageDisplayTime);
+            //Time.timeScale = 0f;
         }
     }
 
@@ -35,6 +49,8 @@ public class PlayerReachMountain : MonoBehaviour
         collectMessage.enabled = true;
 
         Invoke(nameof(HideMessage), messageDisplayTime);
+        
+
     }
 
     private void HideMessage()
@@ -52,6 +68,29 @@ public class PlayerReachMountain : MonoBehaviour
         else
         {
             Debug.LogWarning("No audio clip assigned for successBGM.");
+        }
+    }
+    private void EnableUnityGeminiScript()
+    {
+        if (evalautionBackground != null)
+        {
+            evalautionBackground.gameObject.SetActive(true);
+        }
+        if (evalautionText != null){
+            evalautionText.gameObject.SetActive(true);
+        }
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+        if (quitButton != null)
+        {
+            quitButton.gameObject.SetActive(true);
+        }
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = true;
+            Debug.Log("UnityGemini Script has been enabled");
         }
     }
 }

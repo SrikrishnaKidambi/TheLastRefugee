@@ -71,5 +71,6 @@ public class DrawOpen : MonoBehaviour
 
         transform.localPosition = targetPosition; // Ensure the final position is exact
         Debug.Log("Drawer movement complete. Final position: " + transform.localPosition);
+        //this is test comment
     }
 }

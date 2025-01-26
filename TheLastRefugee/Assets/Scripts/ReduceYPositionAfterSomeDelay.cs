@@ -13,7 +13,7 @@ public class ReduceYPositionAfterDelay : MonoBehaviour
     void Start()
     {
         // Generate a random delay between t1 and t2
-        float randomDelay = Random.Range(t1, t2);
+        float randomDelay = Random.Range(t1, t2-20);
 
         // Set the target time for when Y position starts reducing
         targetTime = Time.time + randomDelay;

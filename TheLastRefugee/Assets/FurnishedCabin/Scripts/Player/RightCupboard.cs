@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RightCupboardController : MonoBehaviour
 {
-    private bool isOpen = false; // Tracks the door's state (open/closed)
+    public bool isOpen = false; // Tracks the door's state (open/closed)
 
     private bool canOpen = false;
     private void OnTriggerEnter(Collider other)
