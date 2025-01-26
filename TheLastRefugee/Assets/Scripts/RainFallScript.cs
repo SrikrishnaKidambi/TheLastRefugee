@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI; // For UI elements
 
@@ -26,6 +27,14 @@ public class RainFallScript : MonoBehaviour
 
     [Header("UI Settings")]
     public Text healthText;
+    public Text messageText;
+    [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
+    [SerializeField] private TMP_Text evalautionText;
+    [SerializeField] private Image evalautionBackground;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
+    //public Text messagetext;
+
 
     [Header("Props Settings")]
     public bool hasMedicine = false;
@@ -128,7 +137,7 @@ public class RainFallScript : MonoBehaviour
     {
         while (isRaining && playerHealth > 0)
         {
-            if (!hasRainCoat)
+            if (!hasRainCoat && !isInsideHouse)
             {
                 playerHealth -= 0.5f;
                 playerHealth = Mathf.Max(playerHealth, 0); // Clamp health to 0
@@ -140,13 +149,16 @@ public class RainFallScript : MonoBehaviour
             if (playerHealth <= 0)
             {
                 Debug.Log("Player has died due to exposure!");
+                messageText.text = "Player has died due to exposure to rain for prolonged time!";
                 playerHealth = 0; // Ensure health is exactly 0
                 UpdateHealthUI(); // Refresh UI after clamping to zero
+                Invoke(nameof(EnableUnityGeminiScript), 1f);
                 break;
             }
 
             yield return new WaitForSeconds(1f);
         }
+
     }
 
 
@@ -170,11 +182,36 @@ public class RainFallScript : MonoBehaviour
         }
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         if (healthText != null)
         {
             healthText.text = $"Health: {Mathf.Max(playerHealth, 0):0}"; // Ensure health doesn't go below 0
+        }
+    }
+
+    private void EnableUnityGeminiScript()
+    {
+        if (evalautionBackground != null)
+        {
+            evalautionBackground.gameObject.SetActive(true);
+        }
+        if (evalautionText != null)
+        {
+            evalautionText.gameObject.SetActive(true);
+        }
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+        if (quitButton != null)
+        {
+            quitButton.gameObject.SetActive(true);
+        }
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = true;
+            Debug.Log("UnityGemini Script has been enabled");
         }
     }
 }

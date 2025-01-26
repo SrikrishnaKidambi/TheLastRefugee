@@ -10,7 +10,7 @@ public class TorchCollect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && drawOpenScript.isOpen)
         {
             Debug.Log("Player is ready to collect the torch");
             gameObject.SetActive(false);

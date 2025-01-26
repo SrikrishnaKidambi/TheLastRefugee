@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement; // Add this at the top of your script
 using UnityEngine;
-using TMPro;  // Import TextMeshPro namespace
+using TMPro;    // Import TextMeshPro namespace
+using UnityEngine.UI;  
 
 public class StopwatchTimer : MonoBehaviour
 {
@@ -8,19 +9,30 @@ public class StopwatchTimer : MonoBehaviour
     [Tooltip("Time in seconds to start the timer. Default is 120 seconds (2 minutes).")]
     public float startTime = 120f;  // Start time in seconds (default 2 minutes)
 
-    private float timeRemaining;
+    public float timeRemaining;
     private bool isTimerRunning = false;
     private bool isPaused = false;
 
     [Header("UI Elements")]
     [Tooltip("The UI TextMeshPro element to display the timer.")]
     public TMP_Text timerText;  // Reference to the UI TextMeshPro element for displaying the timer
-
+    public Text messageText;
     // Event when the timer finishes
     public event System.Action OnTimerFinished;
 
+
+    [SerializeField] private UnityAndGeminiV3 unityGeminiScript;
+    [SerializeField] private TMP_Text evalautionText;
+    [SerializeField] private Image evalautionBackground;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
+
     void Start()
     {
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = false;
+        }
         InitializeTimer();  // Initialize the timer with the start time
     }
 void Update()
@@ -29,7 +41,7 @@ void Update()
     {
         timeRemaining -= Time.deltaTime;
         UpdateTimerText();
-        Debug.Log("Timer Running: " + timeRemaining); // Check the remaining time
+        //Debug.Log("Timer Running: " + timeRemaining); // Check the remaining time
     }
     else if (timeRemaining <= 0 && isTimerRunning)
     {
@@ -57,6 +69,9 @@ void Update()
     {
         // Trigger custom event or any action after timer ends
         OnTimerFinished?.Invoke();  // Notify any listeners
+        messageText.text = "Time Up";
+        Invoke(nameof(EnableUnityGeminiScript), 1f);
+        //Time.timeScale = 0;
         Debug.Log("Timer Finished!");
 
 
@@ -66,6 +81,30 @@ void Update()
     SceneManager.LoadScene("Endscreen");  // Replace "YourSceneName" with the name of your scene
 
 
+    }
+    private void EnableUnityGeminiScript()
+    {
+        if (evalautionBackground != null)
+        {
+            evalautionBackground.gameObject.SetActive(true);
+        }
+        if (evalautionText != null)
+        {
+            evalautionText.gameObject.SetActive(true);
+        }
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+        if (quitButton != null)
+        {
+            quitButton.gameObject.SetActive(true);
+        }
+        if (unityGeminiScript != null)
+        {
+            unityGeminiScript.enabled = true;
+            Debug.Log("UnityGemini Script has been enabled");
+        }
     }
 
     #region Timer Controls

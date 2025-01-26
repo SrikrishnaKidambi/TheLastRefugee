@@ -569,7 +569,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1383138020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89d2a2f729b0f1e41a16e3ddf7010d4d, type: 3}
+  m_Script: {fileID: 11500000, guid: c4bd0e4deaa2d9f42b4b450b26fa7644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1759228429
@@ -747,9 +747,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1383138025}
-        m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_TargetAssemblyTypeName: RandomSceneChange, Assembly-CSharp
+        m_MethodName: LoadRandomObjective
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
