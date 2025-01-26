@@ -23,7 +23,7 @@ public class CycloneScenario : MonoBehaviour
     public float houseProximityRange = 3f; // Range to detect if the player is near the house
     public float gameTimeLimit = 180f; // Game time limit in seconds (3 minutes)
     private float startTime;
-    [SerializeField] private Collector collector;
+    [SerializeField] public Collector collector;
     [SerializeField] private RainFallScript rainFallScript;
 
     //[SerializeField] private UnityAndGeminiV3 unityAndGemini;
@@ -31,7 +31,7 @@ public class CycloneScenario : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image evaluationImage;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button quitButton;
-    [SerializeField] private RainFallScript rainFallScript;
+    //[SerializeField] private RainFallScript rainFallScript;
     [SerializeField] private UnityAndGeminiV3 unityAndGemini;
     void Start()
     {

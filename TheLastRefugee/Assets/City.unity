@@ -8180,6 +8180,7 @@ MonoBehaviour:
   evalautionBackground: {fileID: 0}
   restartButton: {fileID: 0}
   quitButton: {fileID: 0}
+  rainFallScript: {fileID: 0}
 --- !u!1001 &355219175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13737,6 +13738,7 @@ MonoBehaviour:
   evalautionBackground: {fileID: 642265994}
   restartButton: {fileID: 2143199043}
   quitButton: {fileID: 2107202026}
+  rainFallScript: {fileID: 1297226526}
 --- !u!65 &559352261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15424,8 +15426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef9c30d5f400804694d3512de712a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 15
-  runSpeed: 25
+  walkSpeed: 9
+  runSpeed: 20
   groundDrag: 18
   airMultiplier: 0.25
   jumpForce: 5

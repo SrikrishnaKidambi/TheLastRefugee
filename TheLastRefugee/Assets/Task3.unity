@@ -29162,7 +29162,6 @@ MonoBehaviour:
   houseProximityRange: 3
   gameTimeLimit: 180
   collector: {fileID: 633881051}
-  rainFallScript: {fileID: 1297226526}
   evaluationText: {fileID: 445769974}
   evaluationImage: {fileID: 736537394}
   restartButton: {fileID: 1186078073}
@@ -36297,7 +36296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &806416483
 MonoBehaviour:
   m_ObjectHideFlags: 0
