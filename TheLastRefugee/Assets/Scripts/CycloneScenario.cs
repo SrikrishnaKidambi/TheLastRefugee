@@ -37,7 +37,7 @@ public class CycloneScenario : MonoBehaviour
     {
         //UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         //apiKey = jsonApiKey.key;
-        
+
         startTime = Time.time; // Record the start time of the game
     }
 
