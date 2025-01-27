@@ -105,7 +105,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         prompt += $"The time remaining for the player is {timerScript.timeRemaining}";
         prompt += "Based on these details, evaluate the player's performance and give a score out of 100. Include a detailed summary appreciating the precautionary measures he took andwhat could have been taken for better escape of the disaster.";
         prompt += "Focus more on the aspect of educating the player with possible methods of the survival rather than criticizing as this is being generated in a game";
-        prompt += "The length of the response should be about 7 to 8 lines at maximum and summary should be very clear and should create an impact on the player";
+        prompt += "The length of the response should be about 6 to 7 lines at maximum and summary should be very clear and should create an impact on the player";
         prompt += "The response should be displayed in such a way that first part should be acknowledging and appreciating the measures describing them and steps taken by the player and teh remaining part should be the precautions missed by the player. Note that medicine is not for the player, it is just the task assigned. Also even though the value of the health of the player is less than zero dont just say it directly, just say that health is zero. Hence you have to consider health is zero if the value of the player health is less than or equal to zero.";
         prompt += "The response should be in the form of bullet points and thought provoking";
         prompt += "Also include the score you evalauated in the starting point and remove the stars in the response";
